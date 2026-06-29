@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 from django.utils import timezone
 
 class Blogs(models.Model):
@@ -8,6 +9,7 @@ class Blogs(models.Model):
     blog_title=models.CharField(max_length=100)
     blog_description=models.TextField()
     slug=models.SlugField(unique=True,max_length=250)
+    author=models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE,related_name="blog_posts",default=1)
     publish=models.DateTimeField(default=timezone.now)
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateField(auto_now=True)
