@@ -13,7 +13,7 @@ class Blogs(models.Model):
     publish=models.DateTimeField(default=timezone.now)
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateField(auto_now=True)
-    Status=models.CharField(max_length=10,choices=status,default=status.DRAFT)
+    Status=models.CharField(max_length=10,choices=status.choices,default=status.DRAFT)
 
     class Meta():
         ordering=['-publish']
